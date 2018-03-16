@@ -1,4 +1,6 @@
-/* eliminate defalt browzer settings */
+/*
+ * ELINIMATE DEFAULT BROWSER SETTINGS 
+ */
 body,
 html {
     height: 100%;
@@ -30,7 +32,9 @@ ul{
 }
 
 
-/* GENERAL PAGE SETTINGS */
+/*
+ * GENERAL PAGE SETTINGS
+ */
 .page {
     height: 100%;
     width: 100%;
@@ -40,7 +44,9 @@ ul{
     flex-direction: column;
 }
 
-/* PAGE 1 */
+/* 
+ * PAGE 1 
+ */
 .page1 {
     position: relative;
     background-color: orange;
@@ -64,16 +70,17 @@ ul{
     cursor:pointer;
     color: white;
 }
-/* PAGE 2 */
+/*
+ * PAGE 2 
+ */
 .page2 {
     position: relative;
     background-color: darkorange ;
 }
 
 /*
- * Styles for the Score Panel
+ * SCORE PANEL
  */
-
  .score-panel {
     text-align: center;
     width: 200px;
@@ -135,7 +142,9 @@ ul{
     height: 80%;
 }
 
-/* MEDIA QUERIES */
+/*
+ * MEDIA QUERIES 
+ */
 @media only screen and (max-width: 767px) and (orientation: portrait) {
     .page1 {}
 }
