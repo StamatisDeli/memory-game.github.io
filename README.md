@@ -35,7 +35,7 @@ for (var i = ul.children.length; i >= 0; i--) {
     Done!
 
 4. Need event listener for counting clicks that open a card,
-Count and every 2 clicks, add 1 move, %2=0, 
+Count and every 2 clicks, add 1 move, %2=0 maybe??
 I found a jquery function and modified it:
 http://jsfiddle.net/PKcrd/67/
 
@@ -49,13 +49,17 @@ it works on jfiddle! I will adopt this logic!
     Done! but I am not sure I will keep it.
 
 Counter has tobbe reset on reload.
-    Done!
-    
+    Problem: it resets, but continues to count from where it left!
+        Done!
+
 Maybe there should be a conditional about when to count.
 
+
 5. How to flip cards: 
-a. hide/show
+16/03/2018
+a. hide/show HOW?
 b. toggle class and or hide/show
+I think I will make a class for hidden and toggle that with js.
 c. how do I compare them?
 
 6. When unmatched, flip them closed

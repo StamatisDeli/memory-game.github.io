@@ -17,6 +17,7 @@ html * {
 a {
     text-decoration: none;
 }
+
 a:active {
     background-color: rgb(255, 111, 0);
     border: 1px;
@@ -27,7 +28,8 @@ h1 {
     font-size: 5rem;
     text-align: center;
 }
-ul{
+
+ul {
     list-style-type: none;
 }
 
@@ -73,6 +75,7 @@ ul{
 /*
  * PAGE 2 
  */
+
 .page2 {
     position: relative;
     background-color: darkorange ;
@@ -81,6 +84,7 @@ ul{
 /*
  * SCORE PANEL
  */
+
  .score-panel {
     text-align: center;
     width: 200px;
@@ -137,9 +141,19 @@ ul{
     justify-content: center;
     align-items: center;
 }
+
+.openCard {
+    background-color: white;
+}
+
 .icon {
+    display: none;
     width: 80%;
     height: 80%;
+}
+
+.openIcon {
+    display: block;
 }
 
 /*
