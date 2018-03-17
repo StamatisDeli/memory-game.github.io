@@ -48,23 +48,29 @@ $('button').click(function(){
 it works on jfiddle! I will adopt this logic!
     Done! but I am not sure I will keep it.
 
-Counter has tobbe reset on reload.
-    Problem: it resets, but continues to count from where it left!
+    - Counter has to be reset on reload.
+        Done!
+    - Problem: it resets, but continues to count from where it left!
         Done!
 
-Maybe there should be a conditional about when to count.
+17/03/18
+    - Problem: Counter increments by 2. I hadn't noticed.
 
+    - Maybe there should be a conditional about when to count.
+        Done!: Passing the counter into the event listener does not let the counter count the opened cards. I don't know why!
 
 5. How to flip cards: 
 16/03/2018
-a. hide/show HOW?
-b. toggle class and or hide/show
+    - hide/show HOW?
+    toggle class and/or hide/show
 I think I will make a class for hidden and toggle that with js.
-17/06/2018
+17/03/2018
 After a frustrating day I found that targeting had to be done with a loop in the siblings
-https://stackoverflow.com/questions/925307/how-to-get-lastsibling-by-javascript
+https://stackoverflow.com/questions/925307/how-to-get-lastsibling-by-javascript -Rejected. 
+I decided to remove the container divs of the images.
+I used a selector for childElement. I finally managed to use event delegation, not as good as I wanted though.
 
-c. how do I compare them?
+c. how do I compare cards?
 
 6. When unmatched, flip them closed
 
