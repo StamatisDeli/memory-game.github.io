@@ -142,18 +142,19 @@ ul {
     align-items: center;
 }
 
-.openCard {
+.card img {
+    display: none;
+    width: 80%;
+    height:80%;
+}
+
+.open-card {
     background-color: white;
 }
 
-.icon {
-    display: none;
-    width: 80%;
-    height: 80%;
-}
-
-.openIcon {
+.img-open {
     display: block;
+    visibility: visible;
 }
 
 /*

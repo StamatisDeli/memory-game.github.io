@@ -1,19 +1,17 @@
 /* MEMORY GAME */
 
-
-/* GENERATE A RANDOM ICON ORDER */
+// GENERATE A RANDOM ICON ORDER
 // THE VARS
 const cards = document.querySelector("ul.deck"); // select the cards list
 console.log(cards);
 const restart = document.getElementById("shuffle"); //select the restart icon
 console.log(restart);
 
-// FUNCTION LIST RANOMIZER
-function randomizer (){
+// FUNCTION  - LIST RANOMIZER
+function randomizer() {
     for (let i = cards.children.length; i >= 0; i--) {
-     cards.appendChild(cards.children[Math.random() * i | 0]);
+        cards.appendChild(cards.children[Math.random() * i | 0]);
     }
-    console.log(cards);
 }
 
 // CALL RANDOMIZER WHEN WINDOW OPENS
@@ -21,43 +19,46 @@ window.onload = randomizer();
 console.log(randomizer);
 
 // EVENT LISTENER: CALL RANDOMIZER WHEN RESTART BUTTON IS CLICKED 
-restart.addEventListener("click", function(evt){
+restart.addEventListener("click", function (evt) {
     evt.preventDefault();
     randomizer();
-    // Resetting the counter
-    counterB.innerHTML= 0;
-    count=0;
+    // Resetting the counter - I have to do both
+    counterB.innerHTML = 0;
+    count = 0;
 })
 
-// MOVE CLICKER - 1 MOVE FOR 2 CLICKS
-const counterB =  document.getElementById("moves"); // GET THE VALUE
+// FUNCTION - COUNT CLICKS ON CARDS - 1 MOVE FOR 2 CLICKS
+const counterB = document.getElementById("moves"); // Get the value
 console.log(counterB);
 
-// EVENT LISTENER - CLICKS ON THE CARDS
 let count = 0; // Initialize the counter
 
-cards.addEventListener("click", function(evt){
-    evt.preventDefault();
-
-    count+=1;
-    if (count%2==0){
-        counterB.innerHTML= count;
+function counter(evt) {
+    count += 1;
+    if (count % 2 == 0) { // if the count is an even number..
+        counterB.innerHTML = count; // ...pass it in the counter
     }
     console.log("a click on card!");
-    evt.target.classList.toggle("openCard");
-})
+}
+
+// EVENT LISTENER - PASSING: COUNTER
+cards.addEventListener("click", counter);
 
 // FUNCTION - OPEN A CARD
-//const icon = document.getElementsByClassName("icon"); // select the icon
+cards.addEventListener("click", function (evt) {
+    evt.preventDefault();
+    evt.target.classList.toggle("open-card");
+    var img = evt.target.firstElementChild; // Select the image
+    img.style.display = "block";
+    //img.setAttribute("class", "img-open");
+   //img.classList.toggle("img-open");*/
+   // console.log(icon);
+});
 /*
-const icon = 
+const icon = cards.querySelector("img.icon");
 console.log(icon);
 
 icon.addEventListener("click", function(evt){
-    evt.target.classList.toggle("openIcon");
+    evt.target.classList.toggle("icon-open");
 })
-
-const pic = cards.firstChild();
-console.log (pic);
-
 */

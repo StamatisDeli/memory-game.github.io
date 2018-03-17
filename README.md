@@ -60,6 +60,10 @@ Maybe there should be a conditional about when to count.
 a. hide/show HOW?
 b. toggle class and or hide/show
 I think I will make a class for hidden and toggle that with js.
+17/06/2018
+After a frustrating day I found that targeting had to be done with a loop in the siblings
+https://stackoverflow.com/questions/925307/how-to-get-lastsibling-by-javascript
+
 c. how do I compare them?
 
 6. When unmatched, flip them closed
