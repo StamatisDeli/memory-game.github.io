@@ -16,13 +16,13 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 ## Journal
 
 This is a journal regarding the development of the game
+I passed the current date I worked on a numbered task.
 
-15/03/2018
+15/03/2018 Starting Date
 
 1. Make a welcome screen and a separate game board screen for big gameboard real estate.
 
-2. Randomise the icons with .random?
-maybe make then an object and manipulate their array?
+2. Randomise the icons with .random? maybe make then an object and manipulate their array?
 I found this in StackOverflow:
 
 var ul = document.querySelector('ul');
@@ -31,13 +31,14 @@ for (var i = ul.children.length; i >= 0; i--) {
 }
     Done!
 
-3. I need to pass this in a function, so it triggers when the page is loaded, or the restart button is clicked.
+3. I need to pass this in a function, so it triggers when the page is loaded, and the restart button is clicked.
     Done!
+18/03/2018
+    Doing reset function for the cards. I realized that I have to iterate through all list items, and check each one (loop). 
+    Done.
 
-4. Need event listener for counting clicks that open a card,
-Count and every 2 clicks, add 1 move, %2=0 maybe??
-I found a jquery function and modified it:
-http://jsfiddle.net/PKcrd/67/
+4. Need event listener for counting clicks that open a card, Count and every 2 clicks, add 1 move %2=0 maybe??
+I found a jquery function and modified it: http://jsfiddle.net/PKcrd/67/
 
 var count = 0;
 $('button').click(function(){
@@ -55,9 +56,11 @@ it works on jfiddle! I will adopt this logic!
 
 17/03/18
     - Problem: Counter increments by 2. I hadn't noticed.
-
+        Done! It was simple (wasted enough time though).
     - Maybe there should be a conditional about when to count.
-        Done!: Passing the counter into the event listener does not let the counter count the opened cards. I don't know why!
+        Done!: Passing the counter into the event listener does not let the counter count the opened cards.I don't know why!
+18/03/2018
+          Update: I passed it into a separate function
 
 5. How to flip cards: 
 16/03/2018
@@ -69,6 +72,8 @@ After a frustrating day I found that targeting had to be done with a loop in the
 https://stackoverflow.com/questions/925307/how-to-get-lastsibling-by-javascript -Rejected. 
 I decided to remove the container divs of the images.
 I used a selector for childElement. I finally managed to use event delegation, not as good as I wanted though.
+18/03/2018
+Solved: I had a CSS mistake that's why I couldn't manipulate the images.
 
 c. how do I compare cards?
 
