@@ -4,6 +4,7 @@
 body,
 html {
     height: 100%;
+    overflow-y: hidden; /* hide vertical scroll*/
 }
 
 html,
@@ -12,6 +13,7 @@ html * {
     margin: 0;
     box-sizing: border-box;
     font-family: Gotham, Helvetica Neue, Helvetica, Arial, " sans-serif";
+    scroll-behavior: smooth;
 }
 
 a {

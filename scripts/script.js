@@ -29,6 +29,7 @@ restart.addEventListener("click", function (e) {
     
     clearDeck(); // Close all cards
     cardArray = []; // Clear Array
+    successArray = [];
 })
 
 
@@ -44,14 +45,12 @@ function clearDeck (){
     });
 }
 
-let processing = false; //used to handle radical click event triggers
 let cardArray = []; //Empty Array for selected cards
-let totalArray = []; //All open cards
+let successArray = []; //All open cards
+let success = 0; // Initializing counter for successful hits
+
 // FUNCTION - COMPARE THE CARDS
 function compare (e){
-    if (processing) {
-        return;
-    }
 
     if (e.target.nodeName==="LI"){ // If a list element is hit...
         console.log("LI!!!!");
@@ -59,39 +58,34 @@ function compare (e){
         counter(); //Start Counting...
         showCard(e); // ...Show the card..
         cardArray.push(e.target); //Place current card into array...
-        totalArray.push(e.target); //All open cards stay here
             console.log(cardArray);
+
         let total = cardArray.length;
-        console.log(total);
 
         if (total===2) { // ...When 2 cards selected...
             console.log("2!!!")
             console.log(total);
-            
             //cards.removeEventListener("click", showCard);
             if (cardArray[0].classList.value === cardArray[1].classList.value ){ // ...compare the 2 cards...
                 setTimeout(function(){
                     match(e);
                     console.log("match!!!");
                     cardArray = [];
-                    console.log(totalArray);
-
-                },0)
+                },500)
+                success=success+2;
+                console.log(success);
             }
             else {
                 setTimeout(close, 600); // if no match close them
                 console.log("miss!!!");
-               
-
             }
-            
-            console.log(cardArray)
+
         }
-        
+        if (success===16){
+            console.log("You got it!!!");
+        }
     }
-    if (totalArray.length>16){
-        console.log("more Than n16");
-    }
+    
 }
 
 // FUNCTION - SHOW CARD
