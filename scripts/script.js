@@ -17,7 +17,6 @@ function randomizer() {
 
 // CALL RANDOMIZER WHEN WINDOW OPENS
 window.onload = randomizer();
-console.log(randomizer);
 
 // EVENT LISTENER: CALL RANDOMIZER - RESET COUNTER - CLOSE ALL CARDS
 restart.addEventListener("click", function (e) {
@@ -29,58 +28,70 @@ restart.addEventListener("click", function (e) {
     count = 0;
     
     clearDeck(); // Close all cards
+    cardArray = []; // Clear Array
 })
 
-let cardArray = []; //Empty Array for selected cards
+
 // LISTENER: OPEN A CARD - COUNTER
-cards.addEventListener("click", function (e) {
-    e.preventDefault(); 
-
-    if (e.target.nodeName==="LI"){ // If a list element is hit...
-        console.log("LI!!!!")
-        counter(); //Start Counting...
-/*
-        const data = e.target.dataset.id;
-        console.log(data);
-        
-        cardArray.push(e.target); //Place current card into array...
-        var hit = cardArray[0].dataset.id; //=== cardArray[1].data.id;
-        var hot = cardArray[1].dataset.id;
-        console.log (hit);
-        console.log (hot);
-        // console.log(cardArray);
-*/
-        showCard(e); // ...Show the card..
-        cardArray.push(e.target); //Place current card into array...
-            console.log(cardArray);
-        const total = cardArray.length;
-        console.log(total);
-        
-        if (total===2) { // ...When 2 cards selected...
-            console.log("2!!!")
-            console.log(total);
-            if (cardArray[0].classList.value !== cardArray[1].classList.value ){ // ...compare the 2 cards...
-                setTimeout(close, 500); // if no match close them
-                console.log("miss!!!");
-            }
-            else {
-                console.log("match!!!");
-                cardArray = [];
-            }
-            //cardArray = []; // Eliminate Array content
-            console.log(cardArray)
-        }
-    }
-
-});
+cards.addEventListener("click", compare);
 
 function clearDeck (){
 
-    const visibleCards = document.querySelectorAll('.show'); // select all the cards shown
+    const visibleCards = document.querySelectorAll('.show', '.match'); // select all the cards shown
 
     visibleCards.forEach(function(e) {
-        e.classList.remove('open', 'show');
+        e.classList.remove('open', 'show', 'match');
     });
+}
+
+let processing = false; //used to handle radical click event triggers
+let cardArray = []; //Empty Array for selected cards
+let totalArray = []; //All open cards
+// FUNCTION - COMPARE THE CARDS
+function compare (e){
+    if (processing) {
+        return;
+    }
+
+    if (e.target.nodeName==="LI"){ // If a list element is hit...
+        console.log("LI!!!!");
+
+        counter(); //Start Counting...
+        showCard(e); // ...Show the card..
+        cardArray.push(e.target); //Place current card into array...
+        totalArray.push(e.target); //All open cards stay here
+            console.log(cardArray);
+        let total = cardArray.length;
+        console.log(total);
+
+        if (total===2) { // ...When 2 cards selected...
+            console.log("2!!!")
+            console.log(total);
+            
+            //cards.removeEventListener("click", showCard);
+            if (cardArray[0].classList.value === cardArray[1].classList.value ){ // ...compare the 2 cards...
+                setTimeout(function(){
+                    match(e);
+                    console.log("match!!!");
+                    cardArray = [];
+                    console.log(totalArray);
+
+                },0)
+            }
+            else {
+                setTimeout(close, 600); // if no match close them
+                console.log("miss!!!");
+               
+
+            }
+            
+            console.log(cardArray)
+        }
+        
+    }
+    if (totalArray.length>16){
+        console.log("more Than n16");
+    }
 }
 
 // FUNCTION - SHOW CARD
@@ -89,11 +100,19 @@ function showCard (e){
     e.target.classList.add("show") ; // display the image
 }
 
+// FUNCTION - CLOSE CARD
 function close (e){
     cardArray[0].classList.remove('open');
     cardArray[0].classList.remove('show');
     cardArray[1].classList.remove('open');
     cardArray[1].classList.remove('show');
+    cardArray = [];
+}
+
+// FUNCTION - SELECTED CARD
+function match (e){
+    cardArray[0].classList.add("match");
+    cardArray[1].classList.add("match");
     cardArray = [];
 }
 

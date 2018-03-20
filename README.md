@@ -82,6 +82,7 @@ it works on jfiddle! I will adopt this logic!
         7. When matched, keep them open
         The key was when to clear the array. I went backwards and defined what would happen on unmatch
         -BUG: when clicking fast, a card stays open
+        -BUG: every second time the restart is hit, first card closes 
 8. When all cards are open, pop a congratulations modal message.
     I think I will make another array of opened cards and fire the modal when its 16
 local storage for  leaderboard
