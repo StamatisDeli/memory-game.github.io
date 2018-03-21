@@ -15,6 +15,7 @@ function randomizer() {
     }
 }
 
+
 // CALL RANDOMIZER WHEN WINDOW OPENS
 window.onload = randomizer();
 
@@ -34,8 +35,11 @@ restart.addEventListener("click", function (e) {
 
 
 // LISTENER: OPEN A CARD - COUNTER
-cards.addEventListener("click", compare);
+cards.addEventListener("click", showCard);
+cards.addEventListener("click", compare); //Cards are compared FIRST
 
+
+// FUNTION RESET CARDS
 function clearDeck (){
 
     const visibleCards = document.querySelectorAll('.show', '.match'); // select all the cards shown
@@ -46,52 +50,61 @@ function clearDeck (){
 }
 
 let cardArray = []; //Empty Array for selected cards
+
 let successArray = []; //All open cards
 let success = 0; // Initializing counter for successful hits
 
 // FUNCTION - COMPARE THE CARDS
 function compare (e){
 
-    if (e.target.nodeName==="LI"){ // If a list element is hit...
-        console.log("LI!!!!");
-
         counter(); //Start Counting...
-        showCard(e); // ...Show the card..
-        cardArray.push(e.target); //Place current card into array...
+        //showCard(e); // ...Show the card..
+        if (e.target.nodeName==="LI"){ // If a list element is hit...
+                console.log("LI!!!!");
+            cardArray.push(e.target); //Place current card into array...
             console.log(cardArray);
-
-        let total = cardArray.length;
-
+            
+            let total = cardArray.length;
+        //setTimeout {_ => }
         if (total===2) { // ...When 2 cards selected...
             console.log("2!!!")
             console.log(total);
             //cards.removeEventListener("click", showCard);
+            // toggle back the flip function
+           //setTimeout(_=>)
             if (cardArray[0].classList.value === cardArray[1].classList.value ){ // ...compare the 2 cards...
-                setTimeout(function(){
-                    match(e);
-                    console.log("match!!!");
-                    cardArray = [];
-                },500)
-                success=success+2;
+                
+                match(e);
+                console.log("match!!!");
+                cardArray = []; // Zero the array
+                success=success+2; // Increment successfull hits counter
                 console.log(success);
+                
             }
             else {
                 setTimeout(close, 600); // if no match close them
                 console.log("miss!!!");
+                //cards.addEventListener("click", showCard);
             }
-
+        
         }
-        if (success===16){
+        
+        if (success===16) {
             console.log("You got it!!!");
         }
-    }
     
+    }
 }
+
 
 // FUNCTION - SHOW CARD
 function showCard (e){
+    e.preventDefault();
+    e.stopPropagation();
+
     e.target.classList.add("open"); // change card color
     e.target.classList.add("show") ; // display the image
+
 }
 
 // FUNCTION - CLOSE CARD
@@ -124,6 +137,41 @@ function counter (e){
          counterB.innerHTML = count/2; //...pass it in the counter and devide by 2 - we need 1 every 2
     }
 }
+
+// TIMER SET:
+// The Vars:
+const start = document.getElementById("start");
+const pause = document.getElementById("pause");
+const reset = document.getElementById("reset");
+clock = document.getElementById("time");
+let seconds = 0;
+let int ; // Stores the interval to be accesed globally
+
+//FUNCTION - INCREMENT SEC - ADD TO BOARD
+function run () {
+  seconds++ // seconds are incremented
+  clock.innerHTML=seconds+"sec"; //pass seconds to the html
+}
+//FUNCTION - INCREMENT SEC - ADD TO BOARD
+function tiktok(){
+  clearInterval(tiktok); // ...stop
+  int = setInterval (run, 1000); // configure interval
+}
+//FUNCTION - PAUSE
+function hold (){
+  clearInterval(int);
+}
+//FUNCTION - RESET
+function zero (){
+  clearInterval(int);
+  clock.innerHTML=0;
+  seconds=0;
+}
+
+//event listeners
+start.onclick = tiktok;
+pause.onclick = hold;
+reset.onclick = zero;
 
 /*
 const cardsAncientGreece = [
