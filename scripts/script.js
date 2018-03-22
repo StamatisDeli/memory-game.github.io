@@ -22,29 +22,31 @@ window.onload = randomizer();
 // EVENT LISTENER: CALL RANDOMIZER - RESET COUNTER - CLOSE ALL CARDS
 restart.addEventListener("click", function (e) {
     e.preventDefault();
-    
+
     randomizer(); // Shuffling cards
     // Resetting the counter - I have to do both
     counterB.innerHTML = 0;
     count = 0;
-    
+
     clearDeck(); // Close all cards
     cardArray = []; // Clear Array
     successArray = [];
+    zero();
+    cards.addEventListener("click", tiktok, true);
 })
 
 
 // LISTENER: OPEN A CARD - COUNTER
 cards.addEventListener("click", showCard);
 cards.addEventListener("click", compare); //Cards are compared FIRST
-
+cards.addEventListener("click", tiktok, true);
 
 // FUNTION RESET CARDS
-function clearDeck (){
+function clearDeck() {
 
     const visibleCards = document.querySelectorAll('.show', '.match'); // select all the cards shown
 
-    visibleCards.forEach(function(e) {
+    visibleCards.forEach(function (e) {
         e.classList.remove('open', 'show', 'match');
     });
 }
@@ -55,60 +57,61 @@ let successArray = []; //All open cards
 let success = 0; // Initializing counter for successful hits
 
 // FUNCTION - COMPARE THE CARDS
-function compare (e){
+function compare(e) {
 
-        counter(); //Start Counting...
-        //showCard(e); // ...Show the card..
-        if (e.target.nodeName==="LI"){ // If a list element is hit...
-                console.log("LI!!!!");
-            cardArray.push(e.target); //Place current card into array...
-            console.log(cardArray);
-            
-            let total = cardArray.length;
-        //setTimeout {_ => }
-        if (total===2) { // ...When 2 cards selected...
+     //Start Counting...
+    //showCard(e); // ...Show the card..
+    if (e.target.nodeName === "LI") { // If a list element is hit...
+        console.log("LI!!!!");
+        cardArray.push(e.target); //Place current card into array...
+        console.log(cardArray);
+        counter(); //Start counting moves
+        let total = cardArray.length;
+
+        cards.removeEventListener("click", tiktok, true); // Don't start timer again
+
+        if (total === 2) { // ...When 2 cards selected...
             console.log("2!!!")
             console.log(total);
-            //cards.removeEventListener("click", showCard);
+            cards.removeEventListener("click", showCard, true);
             // toggle back the flip function
-           //setTimeout(_=>)
-            if (cardArray[0].classList.value === cardArray[1].classList.value ){ // ...compare the 2 cards...
-                
+            //setTimeout(_=>)
+            if (cardArray[0].classList.value === cardArray[1].classList.value) { // ...compare the 2 cards...
+
                 match(e);
                 console.log("match!!!");
                 cardArray = []; // Zero the array
-                success=success+2; // Increment successfull hits counter
+                success = success + 2; // Increment successfull hits counter
                 console.log(success);
-                
             }
             else {
                 setTimeout(close, 600); // if no match close them
                 console.log("miss!!!");
-                //cards.addEventListener("click", showCard);
+                //cards.addEventListener("click", showCard, true);
             }
-        
+            
         }
         
-        if (success===16) {
+        if (success === 16) {
             console.log("You got it!!!");
         }
-    
+
     }
 }
 
 
 // FUNCTION - SHOW CARD
-function showCard (e){
+function showCard(e) {
     e.preventDefault();
     e.stopPropagation();
 
     e.target.classList.add("open"); // change card color
-    e.target.classList.add("show") ; // display the image
+    e.target.classList.add("show"); // display the image
 
 }
 
 // FUNCTION - CLOSE CARD
-function close (e){
+function close(e) {
     cardArray[0].classList.remove('open');
     cardArray[0].classList.remove('show');
     cardArray[1].classList.remove('open');
@@ -117,7 +120,7 @@ function close (e){
 }
 
 // FUNCTION - SELECTED CARD
-function match (e){
+function match(e) {
     cardArray[0].classList.add("match");
     cardArray[1].classList.add("match");
     cardArray = [];
@@ -130,11 +133,11 @@ console.log(counterB);
 // Initialize the counter
 let count = 0;
 
-function counter (e){
+function counter(e) {
 
     count += 1;
-    if (count %2==0) { // if the count is an even number..
-         counterB.innerHTML = count/2; //...pass it in the counter and devide by 2 - we need 1 every 2
+    if (count % 2 == 0) { // if the count is an even number..
+        counterB.innerHTML = count / 2; //...pass it in the counter and devide by 2 - we need 1 every 2
     }
 }
 
@@ -145,33 +148,34 @@ const pause = document.getElementById("pause");
 const reset = document.getElementById("reset");
 clock = document.getElementById("time");
 let seconds = 0;
-let int ; // Stores the interval to be accesed globally
+let int; // Stores the interval to be accesed globally
 
 //FUNCTION - INCREMENT SEC - ADD TO BOARD
-function run () {
-  seconds++ // seconds are incremented
-  clock.innerHTML=seconds+"sec"; //pass seconds to the html
+function run() {
+    seconds++ // seconds are incremented
+    clock.innerHTML = seconds + "sec"; //pass seconds to the html
 }
 //FUNCTION - INCREMENT SEC - ADD TO BOARD
-function tiktok(){
-  clearInterval(tiktok); // ...stop
-  int = setInterval (run, 1000); // configure interval
+function tiktok() {
+    clearInterval(tiktok); // ...stop
+    int = setInterval(run, 1000); // configure interval
 }
 //FUNCTION - PAUSE
-function hold (){
-  clearInterval(int);
+function hold() {
+    clearInterval(int);
 }
 //FUNCTION - RESET
-function zero (){
-  clearInterval(int);
-  clock.innerHTML=0;
-  seconds=0;
+function zero() {
+    clearInterval(int);
+    clock.innerHTML = 0;
+    seconds = 0;
 }
 
 //event listeners
 start.onclick = tiktok;
 pause.onclick = hold;
 reset.onclick = zero;
+
 
 /*
 const cardsAncientGreece = [
