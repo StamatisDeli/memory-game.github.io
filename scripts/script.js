@@ -37,7 +37,7 @@ restart.addEventListener("click", function (e) {
 
 
 // LISTENER: OPEN A CARD - COUNTER
-cards.addEventListener("click", showCard);
+cards.addEventListener("click", showCard, );
 cards.addEventListener("click", compare); //Cards are compared FIRST
 cards.addEventListener("click", tiktok, true);
 
@@ -52,14 +52,13 @@ function clearDeck() {
 }
 
 let cardArray = []; //Empty Array for selected cards
-
 let successArray = []; //All open cards
 let success = 0; // Initializing counter for successful hits
 
 // FUNCTION - COMPARE THE CARDS
 function compare(e) {
 
-     //Start Counting...
+    //Start Counting...
     //showCard(e); // ...Show the card..
     if (e.target.nodeName === "LI") { // If a list element is hit...
         console.log("LI!!!!");
@@ -73,32 +72,44 @@ function compare(e) {
         if (total === 2) { // ...When 2 cards selected...
             console.log("2!!!")
             console.log(total);
-            cards.removeEventListener("click", showCard, true);
+            //cards.removeEventListener("click", showCard);
+
             // toggle back the flip function
             //setTimeout(_=>)
             if (cardArray[0].classList.value === cardArray[1].classList.value) { // ...compare the 2 cards...
 
                 match(e);
                 console.log("match!!!");
-                cardArray = []; // Zero the array
+                
                 success = success + 2; // Increment successfull hits counter
                 console.log(success);
+                //cards.addEventListener("click", showCard);
             }
+
             else {
                 setTimeout(close, 600); // if no match close them
                 console.log("miss!!!");
+                
                 //cards.addEventListener("click", showCard, true);
             }
+            /*
+            setTimeout(function () {
+                cards.addEventListener("click", showCard); 
+                console.log("time!!!");
+            }, 1000)
+            */
             
         }
-        
+
         if (success === 16) {
             console.log("You got it!!!");
+            openModal();
+            hold();
+            success = 0; // zero counter
         }
 
     }
 }
-
 
 // FUNCTION - SHOW CARD
 function showCard(e) {
@@ -117,6 +128,8 @@ function close(e) {
     cardArray[1].classList.remove('open');
     cardArray[1].classList.remove('show');
     cardArray = [];
+    cards.addEventListener("click", showCard);
+    console.log("time!!!");
 }
 
 // FUNCTION - SELECTED CARD
@@ -126,12 +139,12 @@ function match(e) {
     cardArray = [];
 }
 
-//FUNCTION - COUNTER
+//FUNCTION - MOVES COUNTER
 // Var for Counter
 const counterB = document.getElementById("moves"); // Get the value
 console.log(counterB);
-// Initialize the counter
-let count = 0;
+
+let count = 0; // Initialize the counter
 
 function counter(e) {
 
@@ -155,15 +168,18 @@ function run() {
     seconds++ // seconds are incremented
     clock.innerHTML = seconds + "sec"; //pass seconds to the html
 }
+
 //FUNCTION - INCREMENT SEC - ADD TO BOARD
 function tiktok() {
     clearInterval(tiktok); // ...stop
     int = setInterval(run, 1000); // configure interval
 }
+
 //FUNCTION - PAUSE
 function hold() {
     clearInterval(int);
 }
+
 //FUNCTION - RESET
 function zero() {
     clearInterval(int);
@@ -171,10 +187,35 @@ function zero() {
     seconds = 0;
 }
 
-//event listeners
-start.onclick = tiktok;
-pause.onclick = hold;
-reset.onclick = zero;
+//MODAL FUNCTIONALITY
+// Get the modal
+var modal = document.getElementById("my-modal");
+console.log(modal);
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+console.log(btn);
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// FUNCTION - OPEN THE MODAL
+function openModal() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+    console.log("click");
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (e) {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 /*
