@@ -57,7 +57,6 @@ h4 {
     flex-direction: column;
 }
 
-
 /* 
  * PAGE 1 
  */
@@ -86,8 +85,19 @@ h4 {
     cursor: pointer;
     color: white;
 }
+.title-container h1{
+    padding:2rem;
+}
 
+.message h2{
+    padding:2rem;
+}
 
+.info {
+    position: absolute;
+    bottom: 0;
+    padding: 2rem;
+}
 /*
  * PAGE 2 
  */
@@ -121,11 +131,15 @@ h4 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+    font-size: 2rem;
+    color: yellow;
 }
 
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    font-size: 2rem;
+    color: yellow;
 }
 
 .grid-container {
@@ -226,6 +240,8 @@ h4 {
 
 .your-score li{
     display: inline-block;
+    font-size: 2rem;
+    color: yellow;
 }
 
 /* The Close Button */
@@ -243,11 +259,23 @@ h4 {
     cursor: pointer;
 }
 
-
 /*
  * MEDIA QUERIES 
  */
+ @media screen and (max-width:500px) {
+    .deck {
+        width: 360px;
+        min-height: 360px;
+        border-radius: 0;
+        padding: 0.2rem;
+        grid-gap: 1px;
+    }
 
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-    .page1 {}
-}
+    .deck .card {
+        width: 80px;
+        height: 80px;
+    }
+
+
+
+ }

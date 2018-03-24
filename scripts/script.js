@@ -53,7 +53,7 @@ const starsReset =
     `;
 
 function allStars() {
-   stars.innerHTML = starsReset;
+    stars.innerHTML = starsReset;
 }
 
 // LISTENER: MOVES COUNTER - TIMER
@@ -153,12 +153,12 @@ function counter(e) {
     let collectMoves = document.getElementById("moves").innerHTML; //Collect Value
     console.log(collectMoves);
     //Star Rating Conditions
-    if (collectMoves == 3) {
+    if (collectMoves == 10) {
         //remove first star
         document.querySelector(".fa-star:last-of-type").classList.remove("fa-star");
     }
 
-    else if (collectMoves == 6) {
+    else if (collectMoves == 16) {
         document.querySelector(".fa-star:last-of-type").classList.remove("fa-star");
     }
     let currentStars = stars.innerHTML
@@ -194,7 +194,6 @@ function zero() {
 }
 
 //MODAL FUNCTIONALITY
-
 const modal = document.getElementById("my-modal"); // Select the modal
 const btn = document.getElementById("myBtn"); // Select the button
 const span = document.getElementsByClassName("close")[0]; // Select the X
@@ -202,7 +201,7 @@ const span = document.getElementsByClassName("close")[0]; // Select the X
 // FUNCTION - OPEN THE MODAL
 function openModal() {
     modal.style.display = "block";
-    passTheScore ();
+    passTheScore();
 }
 
 // Close the modal
@@ -217,16 +216,15 @@ window.onclick = function (e) {
     }
 };
 
-
 // PASSING SCORE INTO MODAL
-function passTheScore (){
-    const score = 
-    `
+function passTheScore() {
+    const score =
+        `
     <p>Your Rank: ${stars.innerHTML}</p>
     <p>Number of Moves: ${counterB.innerHTML}</p>
     <p>Your Time: ${clock.innerHTML} sec</p>
     `;
-    scoreContainer.innerHTML=score;
+    scoreContainer.innerHTML = score;
 }
 
 /*
