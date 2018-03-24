@@ -56,18 +56,19 @@
     <div class="page page2" id="2">
 
         <section class="score-panel">
-
-            <ul class="stars">
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-                <li>
-                    <i class="fa fa-star"></i>
-                </li>
-            </ul>
+            <div class="starsContainer">
+                <ul class="stars">
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                    <li>
+                        <i class="fa fa-star"></i>
+                    </li>
+                </ul>
+            </div>
 
             <span class="move" id="moves">0</span> <h3>Moves</h3>
 
@@ -144,12 +145,16 @@
 
             <!-- Modal content -->
             <div class="modal-content">
+
                 <span class="close">&times;</span>
                 <h1>congratulations!</h1>
                 <h3>you did it!</h3>
                 <h3>the curator is pleased!</h3>
-                <p>Your Rank:</p>
-                <p>Your time:</p>
+
+                <div class="your-score">
+                    <!-- score goes here with js -->
+                </div>
+
             </div>
 
         </div>

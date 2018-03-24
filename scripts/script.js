@@ -1,12 +1,13 @@
 /* MEMORY GAME */
 
-// GENERATE A RANDOM ICON ORDER
-// THE VARS
+// SELECTORS 
 const cards = document.querySelector("ul.deck"); // select the cards list
-console.log(cards);
-
 const restart = document.getElementById("shuffle"); //select the restart icon
-console.log(restart);
+const stars = document.querySelector(".starsContainer");// select the stars container
+const counterB = document.getElementById("moves"); // select Moves counter
+const clock = document.getElementById("time"); // Select the clock
+const scoreContainer = document.querySelector(".your-score"); // Select the score container
+
 
 // FUNCTION  - LIST RANOMIZER
 function randomizer() {
@@ -14,7 +15,6 @@ function randomizer() {
         cards.appendChild(cards.children[Math.random() * i | 0]);
     }
 }
-
 
 // CALL RANDOMIZER WHEN WINDOW OPENS
 window.onload = randomizer();
@@ -32,87 +32,87 @@ restart.addEventListener("click", function (e) {
     cardArray = []; // Clear Array
     successArray = [];
     zero();
-    cards.addEventListener("click", tiktok, true);
+    cards.addEventListener("click", tiktok, true); // Removed at function: compare
+    allStars();
 })
 
+// RESET THE STARS BLOCK
+const starsReset =
+    `
+    <ul class="stars">
+        <li>
+            <i class="fa fa-star"></i>
+        </li>
+        <li>
+            <i class="fa fa-star"></i>
+        </li>
+        <li>
+            <i class="fa fa-star"></i>
+        </li>
+    </ul>
+    `;
 
-// LISTENER: OPEN A CARD - COUNTER
-//cards.addEventListener("click", showCard);
-cards.addEventListener("click", compare); //Cards are compared FIRST
-cards.addEventListener("click", tiktok, true);
+function allStars() {
+   stars.innerHTML = starsReset;
+}
 
-// FUNTION RESET CARDS
+// LISTENER: MOVES COUNTER - TIMER
+cards.addEventListener("click", compare); //Cards are compared 
+cards.addEventListener("click", tiktok, true); // Start timer when card clicked
+
+// FUNTION: RESET CARDS
 function clearDeck() {
 
-    const visibleCards = document.querySelectorAll('.show', '.match'); // select all the cards shown
+    const visibleCards = document.querySelectorAll(".show", ".match"); // select all the cards shown
     //.. and close them all
     visibleCards.forEach(function (e) {
-        e.classList.remove('open', 'show', 'match');
+        e.classList.remove("open", "show", "match");
     });
 }
 
+// FUNCTION - COMPARE THE CARDS
 let cardArray = []; //Empty Array for selected cards
 let successArray = []; //All open cards
 let success = 0; // Initializing counter for successful hits
 
-// FUNCTION - COMPARE THE CARDS
 function compare(e) {
 
     if (e.target.nodeName === "LI") { // If a list element is hit...
-        console.log("LI!!!!");
-        
+
         cardArray.push(e.target); //Place current card into array...
         let total = cardArray.length;
-        console.log(cardArray);
-
-        counter(); //Start counting moves
 
         cards.removeEventListener("click", tiktok, true); // Don't start timer again
-        if (total<2){
-            showCard(e);
+
+        if (total < 2) {
+            showCard(e); //show a card
         }
 
-
         if (total === 2) { // ...When 2 cards selected...
-            showCard(e);
-            console.log("2!!!");
-            console.log(total);
-            cards.removeEventListener("click", showCard);
 
-            // toggle back the flip function
-            //setTimeout(_=>)
+            showCard(e); //show a card again
+            cards.removeEventListener("click", showCard); // Show is disabled
+            counter(); //Start counting moves
+
             if (cardArray[0].classList.value === cardArray[1].classList.value) { // ...compare the 2 cards...
 
                 match(e);
-                console.log("match!!!");
-
                 success = success + 2; // Increment successfull hits counter
                 console.log(success);
-                //cards.addEventListener("click", showCard);
             }
 
             else {
                 setTimeout(close, 600); // if no match close them
                 console.log("miss!!!");
-
-                //cards.addEventListener("click", showCard, true);
             }
-            /*
-            setTimeout(function () {
-                cards.addEventListener("click", showCard); 
-                console.log("time!!!");
-            }, 1000)
-            */
-
         }
 
         if (success === 16) {
             console.log("You got it!!!");
             openModal();
-            hold();
+            pause();
             success = 0; // zero counter
         }
-
     }
 }
 
@@ -123,7 +123,6 @@ function showCard(e) {
 
     e.target.classList.add("open"); // change card color
     e.target.classList.add("show"); // display the image
-    //cards.removeEventListener("click", showCard);
 }
 
 // FUNCTION - CLOSE CARD
@@ -134,38 +133,40 @@ function close(e) {
     cardArray[1].classList.remove('show');
     cardArray = [];
     cards.addEventListener("click", showCard);
-    console.log("time!!!");
 }
 
-// FUNCTION - SELECTED CARD
+// FUNCTION - MATCHED CARDS BEHAVIOR
 function match(e) {
     cardArray[0].classList.add("match");
     cardArray[1].classList.add("match");
     cardArray = [];
-    //cards.addEventListener("click", showCard);
 }
 
-//FUNCTION - MOVES COUNTER
-// Var for Counter
-const counterB = document.getElementById("moves"); // Get the value
-console.log(counterB);
-
+//FUNCTION - MOVES COUNTER -STAR RATING
 let count = 0; // Initialize the counter
 
 function counter(e) {
 
     count += 1;
-    if (count % 2 === 0) { // if the count is an even number..
-        counterB.innerHTML = count / 2; //...pass it in the counter and devide by 2 - we need 1 every 2
+    counterB.innerHTML = count;
+
+    let collectMoves = document.getElementById("moves").innerHTML; //Collect Value
+    console.log(collectMoves);
+    //Star Rating Conditions
+    if (collectMoves == 3) {
+        //remove first star
+        document.querySelector(".fa-star:last-of-type").classList.remove("fa-star");
     }
+
+    else if (collectMoves == 6) {
+        document.querySelector(".fa-star:last-of-type").classList.remove("fa-star");
+    }
+    let currentStars = stars.innerHTML
+    console.log(currentStars);
 }
 
 // TIMER SET:
 // The Vars:
-const start = document.getElementById("start");
-const pause = document.getElementById("pause");
-const reset = document.getElementById("reset");
-clock = document.getElementById("time");
 let seconds = 0;
 let int; // Stores the interval to be accesed globally
 
@@ -181,7 +182,7 @@ function tiktok() {
 }
 
 //FUNCTION - PAUSE
-function hold() {
+function pause() {
     clearInterval(int);
 }
 
@@ -193,26 +194,20 @@ function zero() {
 }
 
 //MODAL FUNCTIONALITY
-// Get the modal
-var modal = document.getElementById("my-modal");
-console.log(modal);
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-console.log(btn);
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+const modal = document.getElementById("my-modal"); // Select the modal
+const btn = document.getElementById("myBtn"); // Select the button
+const span = document.getElementsByClassName("close")[0]; // Select the X
 
 // FUNCTION - OPEN THE MODAL
 function openModal() {
     modal.style.display = "block";
+    passTheScore ();
 }
 
-// When the user clicks on <span> (x), close the modal
+// Close the modal
 span.onclick = function () {
     modal.style.display = "none";
-    console.log("click");
 };
 
 // When the user clicks anywhere outside of the modal, close it
@@ -222,6 +217,17 @@ window.onclick = function (e) {
     }
 };
 
+
+// PASSING SCORE INTO MODAL
+function passTheScore (){
+    const score = 
+    `
+    <p>Your Rank: ${stars.innerHTML}</p>
+    <p>Number of Moves: ${counterB.innerHTML}</p>
+    <p>Your Time: ${clock.innerHTML} sec</p>
+    `;
+    scoreContainer.innerHTML=score;
+}
 
 /*
 const cardsAncientGreece = [
@@ -250,17 +256,4 @@ const cardsAncientGreece = [
         img: "images/helmet.svg"
     }
 ]
-
-
-
-/*
-someSelector.addEventListener('click', function(event) {
-
-   event.target // this is the clicked element
-
-   // you can call any function here and pass this element as an argument to this function
-
-   doSomeThings(event.target);
-
-});
 */

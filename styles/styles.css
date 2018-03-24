@@ -44,7 +44,6 @@ h4 {
     text-align: center;
 }
 
-
 /*
  * GENERAL PAGE SETTINGS
  */
@@ -98,7 +97,6 @@ h4 {
     background-color: darkorange;
 }
 
-
 /*
  * SCORE PANEL
  */
@@ -144,7 +142,7 @@ h4 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-
+    justify-items: center;
     align-items: center;
     padding: 1rem;
     grid-gap: 10px;
@@ -176,10 +174,14 @@ h4 {
 
 .deck .card.open {
     background-color: white;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .deck .card.match {
     background-color: rgb(3, 238, 199);
+    -webkit-box-shadow: inset 0px 0px 4px 0px #ffffff;
+    box-shadow: inset 0px 0px 4px 0px #ffffff;
 }
 
 .deck .card.show img {
@@ -191,46 +193,42 @@ h4 {
     pointer-events: none;
 }
 
-
-/* The Modal (background) */
-
+/*
+ * THE MODAL
+ */
+ 
+/* Modal background */
 .modal {
     display: none;
     /* Hidden by default */
     position: absolute;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
-    left: 0;
-    top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
+    background-color: rgba(0, 0, 0, 0.507);
     /* Enable scroll if needed */
-    background-color: rgb(252, 71, 71);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
 }
 
 
-/* Modal Content/Box */
-
+/* Modal Content */
 .modal-content {
     background-color: #006eff;
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
+.your-score li{
+    display: inline-block;
+}
 
 /* The Close Button */
-
 .close {
     color: #aaa;
     float: right;

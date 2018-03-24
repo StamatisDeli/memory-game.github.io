@@ -77,10 +77,12 @@ I passed the current date I worked on a numbered task.
             -How do I compare cards?
         7. When matched, keep them open
         The key was when to clear the array. I went backwards and defined what would happen on unmatch
+         -BUG: every second time the restart is hit, first card closes 
+            DONE!
+    22/03/18
         -BUG: when clicking fast, a card stays open
         DONE! : I had e.listener for all cards. Trick is: open one card, open 2 cards, compare them!!!!
-        -BUG: every second time the restart is hit, first card closes 
-        DONE!
+
 22/03/18
 8. When all cards are open, pop a congratulations modal message.
     - make another function of counting cards and fire the modal when its 16
@@ -88,9 +90,11 @@ I passed the current date I worked on a numbered task.
     - 
 9. Timer proper functionality. I made 2 codepens for stopwatch, too!
     DONE!
-
+24/03/18
 10. -Star rating.
     -Pass it to the modal
+    DONE!
+11. Media Queries for responsivenes
 
 11. Local storage for  leaderboard. Optional
     
