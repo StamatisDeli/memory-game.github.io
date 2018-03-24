@@ -144,7 +144,7 @@ h4 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-items: center;
+
     align-items: center;
     padding: 1rem;
     grid-gap: 10px;

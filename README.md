@@ -21,33 +21,30 @@ I passed the current date I worked on a numbered task.
 15/03/2018 Starting Date
 
 1. Make a welcome screen and a separate game board screen for big gameboard real estate.
-
 2. Randomise the icons with .random? maybe make then an object and manipulate their array?
-I found this in StackOverflow:
+    I found this in StackOverflow:
 
-var ul = document.querySelector('ul');
-for (var i = ul.children.length; i >= 0; i--) {
-    ul.appendChild(ul.children[Math.random() * i | 0]);
-}
-    Done!
-
+    var ul = document.querySelector('ul');
+    for (var i = ul.children.length; i >= 0; i--) {
+        ul.appendChild(ul.children[Math.random() * i | 0]);
+    }
+        Done!
 3. I need to pass this in a function, so it triggers when the page is loaded, and the restart button is clicked.
     Done!
     18/03/2018
         Doing reset function for the cards. I realized that I have to iterate through all list items, and check each one (loop). 
         Done.
-
 4. Need event listener for counting clicks that open a card, Count and every 2 clicks, add 1 move %2=0 maybe??
-I found a jquery function and modified it: http://jsfiddle.net/PKcrd/67/
+    I found a jquery function and modified it: http://jsfiddle.net/PKcrd/67/
 
-var count = 0;
-$('button').click(function(){
-     count++;
-     if (count%2==0){ // modification
-    $(this).text("clicked "+count+" times")}
-});
-it works on jfiddle! I will adopt this logic!
-    Done! but I am not sure I will keep it.
+            var count = 0;
+            $('button').click(function(){
+                count++;
+                if (count%2==0){ // modification
+                $(this).text("clicked "+count+" times")}
+            });
+        it works on jfiddle! I will adopt this logic!
+            Done! but I am not sure I will keep it.
 
     - Counter has to be reset on reload.
         Done!
@@ -75,17 +72,30 @@ it works on jfiddle! I will adopt this logic!
     18/03/2018
         Solved: I had a CSS mistake that's why I couldn't manipulate the images.
 
-
 20/03/2018
         6. When unmatched, flip them closed
             -How do I compare cards?
         7. When matched, keep them open
         The key was when to clear the array. I went backwards and defined what would happen on unmatch
         -BUG: when clicking fast, a card stays open
+        DONE! : I had e.listener for all cards. Trick is: open one card, open 2 cards, compare them!!!!
         -BUG: every second time the restart is hit, first card closes 
+        DONE!
+22/03/18
 8. When all cards are open, pop a congratulations modal message.
-    I think I will make another array of opened cards and fire the modal when its 16
-local storage for  leaderboard
+    - make another function of counting cards and fire the modal when its 16
+    Done!
+    - 
+9. Timer proper functionality. I made 2 codepens for stopwatch, too!
+    DONE!
+
+10. -Star rating.
+    -Pass it to the modal
+
+11. Local storage for  leaderboard. Optional
+    
+
+
 
 
 Note from Nikolas:
