@@ -19,10 +19,8 @@
 
     <!-- Fonts & Fonts Related-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Signika:600" rel="stylesheet">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
 
     <!-- The Favicon -->
     <link rel="icon" href="images/favicon-16x16.png">
@@ -32,13 +30,19 @@
 <body>
 
     <!-- PAGE 1 -->
-    <div class="page page1" id="1">
+    <div class="page page1" title="Background Image of Temple Decorations" id="1">
+
+        <div class="meander-container">
+            <img src="images/meandros.svg" alt="Meander Decoration">
+        </div>
 
         <div class="title-container">
-            <h1>memory game</h1>
+            <h2>ancient Greece</h2>
+            <img src="images/game-title.svg" alt="Game-Title Logo">
+            <h1>game</h1>
         </div>
         
-        <div class="button-container">
+        <div class="button-container" title="Click To Start!!!">
             <a href="#2" class="button">
                 <h2>PRESS START</h2>
             </a>
@@ -79,7 +83,7 @@
                 <span class="move" id="moves">0</span>
             </div>
 
-            <div class="restart" id="shuffle">
+            <div class="restart" id="shuffle" title="Click to Restart!">
                 <i class="fa fa-repeat"></i>
             </div>
 
@@ -91,7 +95,7 @@
         </section>
 
         <main class="grid-container">
-            <ul class="deck" id="theDeck">
+            <ul class="deck" id="theDeck" title="Click to Dig!">
                 <li class="card 1">
                     <img src="images/labrys.svg" alt="">
                 </li>
@@ -152,7 +156,7 @@
             <div class="modal-content">
 
                 <span class="close">&times;</span>
-                <h1>congratulations!</h1>
+                <h1>BRAVO!!!</h1>
                 <h3>you did it!</h3>
                 <h3>the curator is pleased!</h3>
 

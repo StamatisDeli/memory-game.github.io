@@ -2,8 +2,13 @@
 
 ## Table of Contents
 
+##Play The Game
+https://stamatisdeli.github.io/memory-game.github.io/
+
 * [Instructions](#instructions)
-* [Journal](#journal)
+* [Journal ](#journal)
+* [Aknowledgements](#acknowledgements)
+* [Image Sources](#decorative vectors from:)
 
 ## Instructions
 
@@ -15,7 +20,8 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 
 ## Journal
 
-This is a journal regarding the development of the game
+This is a journal regarding the development of the game.
+The numebered items are the steps I came up with.
 I passed the current date I worked on a numbered task.
 
 15/03/2018 Starting Date
@@ -94,11 +100,13 @@ I passed the current date I worked on a numbered task.
 10. -Star rating.
     -Pass it to the modal
     DONE!
+25/03/18
 11. Media Queries for responsivenes
-
+    DONE!
+    - Some images for looks
+        DONE!
 11. Local storage for  leaderboard. Optional
-    
-
+    Maybe later
 
 
 
@@ -123,3 +131,13 @@ someSelector.addEventListener('click', function(event) {
    doSomeThings(event.target);
 
 });
+
+
+##Aknowledgements
+I would like to thank all the FENDies for their support through the slack channel,
+especially Nicolas Marcora, who patiently answered most of my silly questions.
+
+##Decorative Vectors From:
+https://www.flaticon.com/packs/ancient-greece-3   
+https://www.vecteezy.com/vector-art/117905-greek-decorative-motifs   
+https://fontawesome.com/

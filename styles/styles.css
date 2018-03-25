@@ -45,9 +45,11 @@ span {
     text-align: center;
 }
 
+
 /*
  * GENERAL PAGE SETTINGS
  */
+
 .page {
     height: 100%;
     width: 100%;
@@ -57,25 +59,48 @@ span {
     flex-direction: column;
 }
 
+
 /* 
  * PAGE 1 
  */
+
 .page1 {
     position: relative;
     background-color: orange;
-    background-image: ;
+    background-image: url(../images/thriggos.svg );
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
-    background-attachment: ;
-    background-position: center;
+}
+
+.meander-container {
+    width: 100%;
+    position: absolute;
+    top: 2rem;
+}
+
+.title-container {
+    width: 60%;
+    margin: 1rem;
+}
+
+.title-container h1 {
+    font-size: 4rem;
+    font-family: 'Lobster', cursive;
+    margin-top: -2rem;
+    color: rgb(0, 0, 58);
+}
+
+.title-container h2 {
+    font-size: 2rem;
+    font-family: 'Lobster', cursive;
+    color: rgb(0, 0, 58);
 }
 
 .button {
     width: 200px;
     height: 60px;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: red;
     display: flex;
     justify-content: center;
@@ -83,10 +108,6 @@ span {
     text-decoration: none;
     cursor: pointer;
     color: white;
-}
-
-.title-container h1 {
-    padding: 2rem;
 }
 
 .message h2 {
@@ -99,17 +120,24 @@ span {
     padding: 2rem;
 }
 
+
 /*
  * PAGE 2 
  */
+
 .page2 {
     position: relative;
     background-color: darkorange;
+    background-image: url("../images/pattern.svg");
+    background-size: auto;
+    background-repeat: repeat-x
 }
+
 
 /*
  * SCORE PANEL
  */
+
 .score-panel {
     text-align: center;
     width: 150px;
@@ -164,7 +192,6 @@ span {
     border-radius: 10px;
     background-color: rgba(255, 0, 0, 0.199);
     margin-bottom: 10px;
-
 }
 
 .timer {
@@ -197,7 +224,6 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .deck {
@@ -259,10 +285,14 @@ span {
     pointer-events: none;
 }
 
+
 /*
  * THE MODAL
  */
+
+
 /* Modal background */
+
 .modal {
     display: none;
     /* Hidden by default */
@@ -277,7 +307,9 @@ span {
     transition: all 0.5s ease-out;
 }
 
+
 /* Modal Content */
+
 .modal-content {
     background-color: #006eff;
     margin: 15% auto;
@@ -296,7 +328,9 @@ span {
     color: yellow;
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaa;
     float: right;
@@ -311,68 +345,10 @@ span {
     cursor: pointer;
 }
 
+
 /*
  * MEDIA QUERIES 
  */
-@media screen and (max-width:500px) {
-    .score-panel {
-        position: static;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        justify-items: center;
-        align-items: center;
-        padding: 0.5rem;
-        grid-gap: 5px;
-        width: 330px;
-        height: 130px;
-        margin-bottom: 1rem;
-    }
-
-    .stars-container {
-        margin:0;
-        width: 140px;
-        height: 50px;
-    }
-
-    .moves-container {
-        margin:0;
-        width: 140px;
-        height: 50px;
-        display: flex;
-        align-content: stretch;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .restart {
-        margin:0;
-        width: 140px;
-        height: 50px;
-    }
-
-    .timer {
-        margin:0;
-        width: 140px;
-        height: 50px;
-    }
-
-    .grid-container {
-       align-self: flex-end;
-    }
-
-    .deck {
-        width: 360px;
-        min-height: 360px;
-        border-radius: 0;
-        padding: 0.2rem;
-        grid-gap: 1px;
-    }
-    .deck .card {
-        width: 80px;
-        height: 80px;
-    }
-}
 
 @media screen and (max-width:768px) {
     .score-panel {
@@ -388,15 +364,13 @@ span {
         height: 130px;
         margin-bottom: 1rem;
     }
-
     .stars-container {
-        margin:0;
+        margin: 0;
         width: 140px;
         height: 50px;
     }
-
     .moves-container {
-        margin:0;
+        margin: 0;
         width: 140px;
         height: 50px;
         display: flex;
@@ -404,18 +378,91 @@ span {
         justify-content: space-around;
         align-items: center;
     }
-
     .restart {
-        margin:0;
+        margin: 0;
         width: 140px;
         height: 50px;
     }
-
     .timer {
-        margin:0;
+        margin: 0;
         width: 140px;
         height: 50px;
     }
+    .modal-content {
+        width: 80%;
+        height: 80%;
+    }
+    .title-container {
+        width: 75%;
+    }
+}
 
-
+@media screen and (max-width:500px) {
+    .score-panel {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        padding: 0.5rem;
+        grid-gap: 5px;
+        width: 330px;
+        height: 130px;
+        margin-bottom: 1rem;
+    }
+    .stars-container {
+        margin: 0;
+        width: 140px;
+        height: 50px;
+    }
+    .moves-container {
+        margin: 0;
+        width: 140px;
+        height: 50px;
+        display: flex;
+        align-content: stretch;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .restart {
+        margin: 0;
+        width: 140px;
+        height: 50px;
+    }
+    .timer {
+        margin: 0;
+        width: 140px;
+        height: 50px;
+    }
+    .grid-container {
+        align-self: flex-end;
+    }
+    .deck {
+        width: 360px;
+        min-height: 360px;
+        border-radius: 0;
+        padding: 0.2rem;
+        grid-gap: 1px;
+    }
+    .deck .card {
+        width: 80px;
+        height: 80px;
+    }
+    .modal-content {
+        width: 80%;
+        height: 80%;
+    }
+    .modal-content h1 {
+        font-size: 2rem;
+    }
+    .title-container {
+        width: 90%;
+    }
+    .message h2 {
+        font-size: 1.2rem;
+    }
+    .info {
+        padding: 1rem;
+    }
 }
