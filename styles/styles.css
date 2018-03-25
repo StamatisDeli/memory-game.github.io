@@ -1,5 +1,5 @@
 /*
- * ELINIMATE DEFAULT BROWSER SETTINGS 
+ * ELINIMATE DEFAULT BROWSER SETTINGS AND GENERAL SETTINGS
  */
 
 body,
@@ -40,14 +40,14 @@ p,
 h1,
 h2,
 h3,
-h4 {
+h4,
+span {
     text-align: center;
 }
 
 /*
  * GENERAL PAGE SETTINGS
  */
-
 .page {
     height: 100%;
     width: 100%;
@@ -60,7 +60,6 @@ h4 {
 /* 
  * PAGE 1 
  */
-
 .page1 {
     position: relative;
     background-color: orange;
@@ -85,12 +84,13 @@ h4 {
     cursor: pointer;
     color: white;
 }
-.title-container h1{
-    padding:2rem;
+
+.title-container h1 {
+    padding: 2rem;
 }
 
-.message h2{
-    padding:2rem;
+.message h2 {
+    padding: 2rem;
 }
 
 .info {
@@ -98,10 +98,10 @@ h4 {
     bottom: 0;
     padding: 2rem;
 }
+
 /*
  * PAGE 2 
  */
-
 .page2 {
     position: relative;
     background-color: darkorange;
@@ -110,20 +110,21 @@ h4 {
 /*
  * SCORE PANEL
  */
-
 .score-panel {
     text-align: center;
-    width: 200px;
+    width: 150px;
     position: absolute;
     top: 20px;
     left: 20px;
     display: flex;
     flex-direction: column;
+    border: 1px solid red;
+    border-radius: 12px;
+    padding: 10px;
+    background-color: rgba(255, 0, 0, 0.199);
 }
 
-.score-panel .stars {
-    margin: 0;
-    padding: 0;
+.stars {
     display: inline-block;
     margin: 0 5px 0 0;
 }
@@ -135,9 +136,59 @@ h4 {
     color: yellow;
 }
 
-.score-panel .restart {
-    float: right;
+.restart {
     cursor: pointer;
+    font-size: 2rem;
+    color: yellow;
+    border-radius: 10px;
+    padding: 5px;
+    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.199);
+}
+
+.score-panel .restart i:hover {
+    color: rgba(0, 0, 0, 0.541);
+}
+
+.stars-container {
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.199);
+    margin-bottom: 10px;
+}
+
+.moves-container {
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.199);
+    margin-bottom: 10px;
+
+}
+
+.timer {
+    padding: 5px;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.199);
+    margin-top: 10px;
+}
+
+.timer p {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.timer i {
+    width: 50%;
+    padding: 5px;
     font-size: 2rem;
     color: yellow;
 }
@@ -146,6 +197,7 @@ h4 {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .deck {
@@ -210,7 +262,6 @@ h4 {
 /*
  * THE MODAL
  */
- 
 /* Modal background */
 .modal {
     display: none;
@@ -226,7 +277,6 @@ h4 {
     transition: all 0.5s ease-out;
 }
 
-
 /* Modal Content */
 .modal-content {
     background-color: #006eff;
@@ -235,10 +285,12 @@ h4 {
     width: 80%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
+    align-items: center;
 }
 
-.your-score li{
+.your-score li {
     display: inline-block;
     font-size: 2rem;
     color: yellow;
@@ -262,7 +314,53 @@ h4 {
 /*
  * MEDIA QUERIES 
  */
- @media screen and (max-width:500px) {
+@media screen and (max-width:500px) {
+    .score-panel {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        padding: 0.5rem;
+        grid-gap: 5px;
+        width: 330px;
+        height: 130px;
+        margin-bottom: 1rem;
+    }
+
+    .stars-container {
+        margin:0;
+        width: 140px;
+        height: 50px;
+    }
+
+    .moves-container {
+        margin:0;
+        width: 140px;
+        height: 50px;
+        display: flex;
+        align-content: stretch;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .restart {
+        margin:0;
+        width: 140px;
+        height: 50px;
+    }
+
+    .timer {
+        margin:0;
+        width: 140px;
+        height: 50px;
+    }
+
+    .grid-container {
+       align-self: flex-end;
+    }
+
     .deck {
         width: 360px;
         min-height: 360px;
@@ -270,12 +368,54 @@ h4 {
         padding: 0.2rem;
         grid-gap: 1px;
     }
-
     .deck .card {
         width: 80px;
         height: 80px;
     }
+}
+
+@media screen and (max-width:768px) {
+    .score-panel {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        padding: 0.5rem;
+        grid-gap: 5px;
+        width: 330px;
+        height: 130px;
+        margin-bottom: 1rem;
+    }
+
+    .stars-container {
+        margin:0;
+        width: 140px;
+        height: 50px;
+    }
+
+    .moves-container {
+        margin:0;
+        width: 140px;
+        height: 50px;
+        display: flex;
+        align-content: stretch;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .restart {
+        margin:0;
+        width: 140px;
+        height: 50px;
+    }
+
+    .timer {
+        margin:0;
+        width: 140px;
+        height: 50px;
+    }
 
 
-
- }
+}

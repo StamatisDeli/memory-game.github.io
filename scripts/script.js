@@ -3,7 +3,7 @@
 // SELECTORS 
 const cards = document.querySelector("ul.deck"); // select the cards list
 const restart = document.getElementById("shuffle"); //select the restart icon
-const stars = document.querySelector(".starsContainer");// select the stars container
+const stars = document.querySelector(".stars-container");// select the stars container
 const counterB = document.getElementById("moves"); // select Moves counter
 const clock = document.getElementById("time"); // Select the clock
 const scoreContainer = document.querySelector(".your-score"); // Select the score container
@@ -222,7 +222,7 @@ function passTheScore() {
         `
     <p>Your Rank: ${stars.innerHTML}</p>
     <p>Number of Moves: ${counterB.innerHTML}</p>
-    <p>Your Time: ${clock.innerHTML} sec</p>
+    <p>Your Time: ${clock.innerHTML}</p>
     `;
     scoreContainer.innerHTML = score;
 }
