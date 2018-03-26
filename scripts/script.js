@@ -81,7 +81,6 @@ function compare(e) {
 
         cardArray.push(e.target); //Place current card into array...
         let total = cardArray.length;
-
         cards.removeEventListener("click", tiktok, true); // Don't start timer again
 
         if (total < 2) {
@@ -97,7 +96,7 @@ function compare(e) {
             if (cardArray[0].classList.value === cardArray[1].classList.value) { // ...compare the 2 cards...
 
                 match(e);
-                success = success + 2; // Increment successfull hits counter
+                success +=1 ; // Increment successfull hits counter
                 console.log(success);
             }
 
@@ -107,7 +106,7 @@ function compare(e) {
             }
         }
 
-        if (success === 16) {
+        if (success === 8) {
             console.log("You got it!!!");
             openModal();
             pause();
@@ -151,7 +150,7 @@ function counter(e) {
     counterB.innerHTML = count;
 
     let collectMoves = document.getElementById("moves").innerHTML; //Collect Value
-    console.log(collectMoves);
+
     //Star Rating Conditions
     if (collectMoves == 10) {
         //remove first star
@@ -161,8 +160,7 @@ function counter(e) {
     else if (collectMoves == 16) {
         document.querySelector(".fa-star:last-of-type").classList.remove("fa-star");
     }
-    let currentStars = stars.innerHTML
-    console.log(currentStars);
+    
 }
 
 // TIMER SET:

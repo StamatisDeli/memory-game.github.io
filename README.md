@@ -1,14 +1,15 @@
 # Memory Game Project
 
-## Table of Contents
-
 ##Play The Game
 https://stamatisdeli.github.io/memory-game.github.io/
+
+
+## Table of Contents
 
 * [Instructions](#instructions)
 * [Journal ](#journal)
 * [Aknowledgements](#acknowledgements)
-* [Image Sources](#decorative vectors from:)
+* [Decorative vectors from:](#decorative vectors from:)
 
 ## Instructions
 
